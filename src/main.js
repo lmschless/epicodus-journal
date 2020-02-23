@@ -1,17 +1,29 @@
 import './index.css';
 import { Entry } from './entry.js';
+import { wordSplit } from './entry.js';
+let newEntry;
+let entry;
 
 $(document).ready(function() {
 	$('#journal-form').submit(function(e) {
 		e.preventDefault();
 		const title = $('#title').val();
-		const entry = $('#entry').val();
+		entry = $('#entry').val();
 		console.log(title, entry);
 
-		let newEntry = new Entry(title, entry);
-		console.log(this.title, newEntry.entry);
-		$('#solution').append(`<div><h1>${title}</h1><p>${entry}</p></div>`);
+		newEntry = new Entry(title, entry);
+		console.log(newEntry);
+
+		// console.log(newEntry.wordCount(newEntry.entry));
+
+		$('#solution').append(`<div><h1>${newEntry.title}</h1><p>${newEntry.entry}</p></div>`);
+
 		$('#title').val('');
 		$('#entry').val('');
+	});
+
+	$('#word-count').click(function(e) {
+		e.preventDefault();
+		$('#solution').append(newEntry.wordCount());
 	});
 });

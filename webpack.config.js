@@ -2,12 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var webpack = require('webpack');
 
 module.exports = {
-	entry: {
-		'./src/index': './src/entry.js',
-		'./src/index': './src/main.js'
-	},
+	entry: './src/main.js', // './src/index': './src/main.js'
+
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist')
@@ -23,6 +22,10 @@ module.exports = {
 			title: 'Ping Pong',
 			template: './src/index.html',
 			inject: 'head'
+		}),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery'
 		})
 	],
 	module: {
