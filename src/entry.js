@@ -5,6 +5,7 @@ export class Entry {
 		this.entry = entry;
 	}
 	wordCount() {
+		console.log(this.entry.split(' '));
 		return this.entry.split(' ');
 		// return wordSplit.length();
 	}

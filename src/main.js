@@ -1,8 +1,9 @@
 import './index.css';
 import { Entry } from './entry.js';
-import { wordSplit } from './entry.js';
+// import { Entry.wordSplit } from './entry.js';
 let newEntry;
 let entry;
+let title;
 
 $(document).ready(function() {
 	$('#journal-form').submit(function(e) {
@@ -18,12 +19,14 @@ $(document).ready(function() {
 
 		$('#solution').append(`<div><h1>${newEntry.title}</h1><p>${newEntry.entry}</p></div>`);
 
-		$('#title').val('');
-		$('#entry').val('');
+		// $('#title').val('');
+		// $('#entry').val('');
 	});
 
 	$('#word-count').click(function(e) {
+		newEntry = new Entry(title, entry);
+
 		e.preventDefault();
-		$('#solution').append(newEntry.wordCount());
+		$('#solution').append(newEntry.wordCount(entry));
 	});
 });
