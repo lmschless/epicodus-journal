@@ -4,7 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-	entry: './src/main.js',
+	entry: {
+		'./src/index': './src/entry.js',
+		'./src/index': './src/main.js'
+	},
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist')
